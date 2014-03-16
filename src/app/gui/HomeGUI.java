@@ -35,7 +35,6 @@ public class HomeGUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("RUKKAs Horoscope");
-        setPreferredSize(new java.awt.Dimension(280, 280));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -61,6 +60,11 @@ public class HomeGUI extends javax.swing.JFrame {
         btn_Go.setMaximumSize(new java.awt.Dimension(150, 50));
         btn_Go.setMinimumSize(new java.awt.Dimension(150, 50));
         btn_Go.setPreferredSize(new java.awt.Dimension(150, 50));
+        btn_Go.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_GoActionPerformed(evt);
+            }
+        });
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/gui/images/3(100x100).png"))); // NOI18N
 
@@ -106,6 +110,12 @@ public class HomeGUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_GoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_GoActionPerformed
+        DetailsEntryGUI dataGUI = new DetailsEntryGUI();
+        dataGUI.setVisible(true);
+        dataGUI.pack();
+    }//GEN-LAST:event_btn_GoActionPerformed
 
     /**
      * @param args the command line arguments

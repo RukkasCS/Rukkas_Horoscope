@@ -6,12 +6,20 @@
 
 package app.gui;
 
+import java.util.Date;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author User
  */
 public class DetailsEntryGUI extends javax.swing.JFrame {
-
+    
+    Integer submitCount = 0;
+    String pName;
+    int pDOBDate;
+    int pDOBMonth;
+    int pDOBYear;
     /**
      * Creates new form DetailsEntryGUI
      */
@@ -35,10 +43,14 @@ public class DetailsEntryGUI extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         txt_Name = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        txt_DOB = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btn_Submit = new javax.swing.JButton();
+        btn_Clear = new javax.swing.JButton();
+        btn_Check = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        lbl_People = new javax.swing.JLabel();
+        txt_DOBYear = new javax.swing.JTextField();
+        cmbbx_DOBDate = new javax.swing.JComboBox();
+        cmbbx_DOBMonth = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Enter Your Details");
@@ -64,38 +76,65 @@ public class DetailsEntryGUI extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setText("Date of Birth");
 
-        txt_DOB.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        txt_DOB.setForeground(new java.awt.Color(0, 0, 204));
-
-        jButton1.setBackground(new java.awt.Color(0, 153, 153));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Enter Next Person");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_Submit.setBackground(new java.awt.Color(0, 153, 153));
+        btn_Submit.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_Submit.setForeground(new java.awt.Color(255, 255, 255));
+        btn_Submit.setText("Add Person");
+        btn_Submit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_SubmitActionPerformed(evt);
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(255, 0, 0));
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Clear");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btn_Clear.setBackground(new java.awt.Color(255, 0, 0));
+        btn_Clear.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_Clear.setForeground(new java.awt.Color(255, 255, 255));
+        btn_Clear.setText("Clear");
+        btn_Clear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btn_ClearActionPerformed(evt);
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(0, 153, 0));
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Check Horoscopes!");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btn_Check.setBackground(new java.awt.Color(0, 153, 0));
+        btn_Check.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_Check.setForeground(new java.awt.Color(255, 255, 255));
+        btn_Check.setText("Check Horoscopes!");
+        btn_Check.setEnabled(false);
+        btn_Check.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btn_CheckActionPerformed(evt);
             }
         });
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel6.setText("Entered No. of People:");
+
+        lbl_People.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lbl_People.setForeground(new java.awt.Color(255, 0, 0));
+        lbl_People.setText("0");
+
+        txt_DOBYear.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txt_DOBYear.setForeground(new java.awt.Color(0, 0, 204));
+        txt_DOBYear.setText("Year...");
+        txt_DOBYear.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_DOBYearMouseClicked(evt);
+            }
+        });
+        txt_DOBYear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_DOBYearActionPerformed(evt);
+            }
+        });
+
+        cmbbx_DOBDate.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        cmbbx_DOBDate.setForeground(new java.awt.Color(0, 0, 204));
+        cmbbx_DOBDate.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Date...", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+
+        cmbbx_DOBMonth.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        cmbbx_DOBMonth.setForeground(new java.awt.Color(0, 0, 204));
+        cmbbx_DOBMonth.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Month...", "JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -105,52 +144,68 @@ public class DetailsEntryGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12))
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(12, 12, 12)))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(77, 77, 77)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGap(102, 102, 102)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txt_DOB)
-                            .addComponent(txt_Name)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbl_People, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(btn_Check, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                    .addComponent(btn_Submit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(btn_Clear, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(cmbbx_DOBDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(cmbbx_DOBMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txt_DOBYear, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txt_Name)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(18, 18, 18)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
-                .addGap(18, 18, 18)
+                .addGap(11, 11, 11)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel4)
                     .addComponent(txt_Name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(txt_DOB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addGap(27, 27, 27)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                    .addComponent(jLabel5)
+                    .addComponent(txt_DOBYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbbx_DOBDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbbx_DOBMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btn_Submit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_Clear, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(lbl_People, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btn_Check, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -175,17 +230,70 @@ public class DetailsEntryGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btn_SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SubmitActionPerformed
+        //Checking for missing details
+        if (    !txt_Name.getText().equals("") 
+                && cmbbx_DOBDate.getSelectedIndex() != 0 
+                && cmbbx_DOBMonth.getSelectedIndex() != 0 
+                && ( !txt_DOBYear.getText().equals("") || !txt_DOBYear.getText().equals("Year...") ) 
+           )
+        { 
+            pName = txt_Name.getText(); 
+            
+            String temp1 = cmbbx_DOBDate.getSelectedItem().toString();
+            pDOBDate = Integer.parseInt(temp1);            
+            
+            pDOBMonth = cmbbx_DOBMonth.getSelectedIndex();
+            
+            try
+            {
+                pDOBYear = Integer.parseInt(txt_DOBYear.getText());
+            }
+            catch(Exception e)
+            {
+                JOptionPane.showMessageDialog(rootPane, "Please Re-check entered 'YEAR'!", "Error", 0);
+                --submitCount;
+            }
+            
+            //Setting the CheckButton Enabled
+            ++submitCount;
+            lbl_People.setText(submitCount.toString());
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+            if (submitCount >= 3)
+            {
+                btn_Check.setEnabled(true);
+            }
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(rootPane,
+                    "Please provide both 'Name' and your 'Date Of Birth' properly to submit!",
+                    "Missing Details",0);
+        }
+        
+        
+    }//GEN-LAST:event_btn_SubmitActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btn_ClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ClearActionPerformed
+        txt_Name.setText("");
+        cmbbx_DOBDate.setSelectedIndex(0);
+        cmbbx_DOBMonth.setSelectedIndex(0);
+        txt_DOBYear.setText("Year...");
+    }//GEN-LAST:event_btn_ClearActionPerformed
+
+    private void btn_CheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CheckActionPerformed
+        DisplayGUI disGUI = new DisplayGUI();
+        disGUI.setVisible(true);
+        disGUI.pack();
+    }//GEN-LAST:event_btn_CheckActionPerformed
+
+    private void txt_DOBYearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_DOBYearActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_txt_DOBYearActionPerformed
+
+    private void txt_DOBYearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_DOBYearMouseClicked
+        txt_DOBYear.setText("");
+    }//GEN-LAST:event_txt_DOBYearMouseClicked
 
     /**
      * @param args the command line arguments
@@ -223,16 +331,20 @@ public class DetailsEntryGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btn_Check;
+    private javax.swing.JButton btn_Clear;
+    private javax.swing.JButton btn_Submit;
+    private javax.swing.JComboBox cmbbx_DOBDate;
+    private javax.swing.JComboBox cmbbx_DOBMonth;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txt_DOB;
+    private javax.swing.JLabel lbl_People;
+    private javax.swing.JTextField txt_DOBYear;
     private javax.swing.JTextField txt_Name;
     // End of variables declaration//GEN-END:variables
 }
