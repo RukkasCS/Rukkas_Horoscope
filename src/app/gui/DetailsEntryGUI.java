@@ -6,8 +6,13 @@
 
 package app.gui;
 
-import java.util.Date;
+import app.logic.Person;
+import java.util.ArrayList;
+import java.util.Calendar;
 import javax.swing.JOptionPane;
+import java.util.Date.*;
+import java.util.Calendar.*;
+import java.util.Date;
 
 /**
  *
@@ -20,10 +25,16 @@ public class DetailsEntryGUI extends javax.swing.JFrame {
     int pDOBDate;
     int pDOBMonth;
     int pDOBYear;
+    
+    boolean error;
+    
+    ArrayList<Person> sendingList = new ArrayList<Person>();
+    
     /**
      * Creates new form DetailsEntryGUI
      */
     public DetailsEntryGUI() {
+        this.error = false;
         initComponents();
     }
 
@@ -249,19 +260,35 @@ public class DetailsEntryGUI extends javax.swing.JFrame {
             {
                 pDOBYear = Integer.parseInt(txt_DOBYear.getText());
             }
-            catch(Exception e)
+            catch(NumberFormatException e)
             {
                 JOptionPane.showMessageDialog(rootPane, "Please Re-check entered 'YEAR'!", "Error", 0);
-                --submitCount;
+//                --submitCount;
+                error = true;
             }
             
-            //Setting the CheckButton Enabled
-            ++submitCount;
-            lbl_People.setText(submitCount.toString());
-
-            if (submitCount >= 3)
+            if(!error)
             {
-                btn_Check.setEnabled(true);
+                //Creating a Person Object
+                
+                Date bdate;
+                Calendar cal = Calendar.getInstance();
+                
+                cal.set(pDOBYear, pDOBMonth-1, pDOBDate,0,0,0);                
+                bdate = cal.getTime();
+                
+                Person p = new Person(pName, bdate);
+                
+                sendingList.add(p);
+
+                //Setting the CheckButton Enabled
+                ++submitCount;
+                lbl_People.setText(submitCount.toString());
+
+                if (submitCount >= 3)
+                {
+                    btn_Check.setEnabled(true);
+                }
             }
         }
         else

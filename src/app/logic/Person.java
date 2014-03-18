@@ -6,6 +6,8 @@ public class Person
 {    
     private String name = null;
     private Date dob = null;
+    private String zodiacSign = null;
+    private String horoscope = null;
     
     public Person()
     {
@@ -14,27 +16,47 @@ public class Person
     
     public Person (String n, Date d)
     {
-        name = n;
-        dob = d;
+        this.name = n;
+        this.dob = d;
     }
     
     public void setName(String n)
     {
-        name = n;
+        this.name = n;
     }
     
     public String getName()
     {
-        return name;
+        return this.name;
     }
     
     public void setDOB(Date d)
     {
-        dob = d;
+        this.dob = d;
     }
     
     public Date getDOB()
     {
-        return dob;
+        return this.dob;
+    }
+    
+    public void setZodiacSign(String z)
+    {
+        this.zodiacSign = z;
+    }
+    
+    public String getZodiacSign()
+    {
+        return this.zodiacSign;
+    }
+    
+    public void setHoroscope(String h)
+    {
+        this.horoscope = h;
+    }
+    
+    public String getHoroscope()
+    {
+        return this.horoscope;
     }
 }
