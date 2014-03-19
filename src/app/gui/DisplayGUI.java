@@ -6,6 +6,13 @@
 
 package app.gui;
 
+import app.logic.Person;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author User
@@ -31,7 +38,7 @@ public class DisplayGUI extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbl_Display = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -44,17 +51,12 @@ public class DisplayGUI extends javax.swing.JFrame {
         jScrollPane1.setBackground(new java.awt.Color(0, 204, 204));
         jScrollPane1.setForeground(new java.awt.Color(255, 51, 0));
 
-        jTable1.setBackground(new java.awt.Color(0, 153, 153));
-        jTable1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
-        jTable1.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
-        jTable1.setForeground(new java.awt.Color(255, 255, 255));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_Display.setBackground(new java.awt.Color(0, 153, 153));
+        tbl_Display.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        tbl_Display.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        tbl_Display.setForeground(new java.awt.Color(255, 255, 255));
+        tbl_Display.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Shehan", "45", "Aquarius", "Blah blah blahsgdfgdfgdfgdfgdfg"},
-                {"Shehan", "45", "sfssdf", "sdfsdfsdfsdfsdfsdfsdfsdfsdfsdf"},
-                {"sdfsdfsdfsdf", "65", "bmghjgh", "jghjghjghjgjghjghjghjghjghj"},
-                {null, null, null, null},
-                {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
@@ -80,19 +82,19 @@ public class DisplayGUI extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_LAST_COLUMN);
-        jTable1.setAutoscrolls(false);
-        jTable1.setGridColor(new java.awt.Color(255, 255, 255));
-        jTable1.setSelectionBackground(new java.awt.Color(255, 51, 51));
-        jTable1.setSelectionForeground(new java.awt.Color(0, 0, 0));
-        jTable1.setShowVerticalLines(false);
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+        tbl_Display.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_LAST_COLUMN);
+        tbl_Display.setAutoscrolls(false);
+        tbl_Display.setGridColor(new java.awt.Color(255, 255, 255));
+        tbl_Display.setSelectionBackground(new java.awt.Color(255, 51, 51));
+        tbl_Display.setSelectionForeground(new java.awt.Color(0, 0, 0));
+        tbl_Display.setShowVerticalLines(false);
+        tbl_Display.getTableHeader().setReorderingAllowed(false);
+        tbl_Display.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable1MouseClicked(evt);
+                tbl_DisplayMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbl_Display);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/gui/images/1_bottom.png"))); // NOI18N
 
@@ -143,9 +145,9 @@ public class DisplayGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+    private void tbl_DisplayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_DisplayMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTable1MouseClicked
+    }//GEN-LAST:event_tbl_DisplayMouseClicked
 
     /**
      * @param args the command line arguments
@@ -187,6 +189,48 @@ public class DisplayGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tbl_Display;
     // End of variables declaration//GEN-END:variables
+
+    void getPersonList(ArrayList<Person> sendingList) 
+    {
+        Date today = new Date();
+        String name, zodiac, horoscope;
+        int age;
+        DefaultTableModel dtModel = new DefaultTableModel();
+        Object[] convertedObjects = new Object[4];
+        Object[] columnNames = new Object[4];
+        
+        columnNames[0] = "Name";
+        columnNames[1] = "Age";
+        columnNames[2] = "Zodiac Sign";
+        columnNames[3] = "Horoscope";
+        
+        dtModel.setColumnIdentifiers(columnNames);
+        
+        for(Person p : sendingList)
+        {
+            name = p.getName();
+            
+            //Get the DOB and calculate the age
+            Date bdate = p.getDOB();
+            int bd = bdate.getYear();
+            int now = today.getYear();
+            age = now - bd;
+            if (bdate.getMonth() > today.getMonth())    {   age = age - 1;  }            
+            if (bdate.getMonth() == today.getMonth())   {   if (bdate.getDate() > today.getDate())  { age = age - 1;  }   }
+            
+            //Add Zodiac and Horosscope details of the Person.
+            
+            //Display Person in the Table
+            convertedObjects[0] = name;
+            convertedObjects[1] = age;
+            convertedObjects[2] = null;
+            convertedObjects[3] = null;
+                    
+            dtModel.addRow(convertedObjects);
+            
+        }
+        this.tbl_Display.setModel(dtModel);
+    }
 }

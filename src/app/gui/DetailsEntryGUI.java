@@ -312,6 +312,8 @@ public class DetailsEntryGUI extends javax.swing.JFrame {
         DisplayGUI disGUI = new DisplayGUI();
         disGUI.setVisible(true);
         disGUI.pack();
+        
+        disGUI.getPersonList(sendingList);
     }//GEN-LAST:event_btn_CheckActionPerformed
 
     private void txt_DOBYearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_DOBYearActionPerformed
