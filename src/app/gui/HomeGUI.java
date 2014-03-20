@@ -16,6 +16,7 @@ public class HomeGUI extends javax.swing.JFrame {
      * Creates new form HomeGUI
      */
     public HomeGUI() {
+        setLocation(433, 234);
         initComponents();
     }
 

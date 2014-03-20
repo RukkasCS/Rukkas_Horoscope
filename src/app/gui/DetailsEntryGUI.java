@@ -34,6 +34,8 @@ public class DetailsEntryGUI extends javax.swing.JFrame {
      * Creates new form DetailsEntryGUI
      */
     public DetailsEntryGUI() {
+        setLocation(360, 140);
+//        setLocationRelativeTo(getRootPane());
         this.error = false;
         initComponents();
     }
