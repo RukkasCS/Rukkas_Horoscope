@@ -27,10 +27,11 @@ public class PrologLayer
         int month=player.getMonth();
         int date=player.getDay();
 
-         String commandText="getDate(X,"+month+","+date+")";
+         String commandText="getDate(Y,X,"+month+","+date+")";
          Query q2=new Query(commandText);
 
-         returnPlayer.setDescription(q2.oneSolution().get("X").toString());
+         returnPlayer.setZodiacSign(q2.oneSolution().get("X").toString());
+         returnPlayer.setDescription(q2.oneSolution().get("Y").toString());         
          returnPlayer.setName(player.getName());
          returnPlayer.setAge(player.getAge());
          return returnPlayer;

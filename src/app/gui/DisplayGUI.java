@@ -244,8 +244,8 @@ public class DisplayGUI extends javax.swing.JFrame {
             //Display Person in the Table
             convertedObjects[0] = player.getName();
             convertedObjects[1] = player.getAge();
-            convertedObjects[2] = player.getDescription();
-            convertedObjects[3] = null;
+            convertedObjects[2] = player.getZodiacSign();
+            convertedObjects[3] = player.getDescription();
                     
             dtModel.addRow(convertedObjects);
         }
