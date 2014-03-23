@@ -9,7 +9,10 @@ package app.gui;
 import app.logic.Person;
 import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import operations.ZodiacOperation;
+import objects.Player;
 
 /**
  *
@@ -204,7 +207,11 @@ public class DisplayGUI extends javax.swing.JFrame {
         
         dtModel.setColumnIdentifiers(columnNames);
         
-        for(Person p : sendingList)
+        //Define objects by Malinda
+        ZodiacOperation zodi =new ZodiacOperation();
+        ArrayList<Player> playerList=new ArrayList<>();
+       
+       for(Person p : sendingList)
         {
             name = p.getName();
             
@@ -217,15 +224,30 @@ public class DisplayGUI extends javax.swing.JFrame {
             if (bdate.getMonth() == today.getMonth())   {   if (bdate.getDate() > today.getDate())  { age = age - 1;  }   }
             
             //Add Zodiac and Horosscope details of the Person.
+            int bd_month = bdate.getMonth() + 1;
+            int bd_date = bdate.getDate();
             
+            //Operations by Malinda
+            Player player=new Player();
+            player.setName(name);
+            player.setAge(age);
+            player.setMonth(bd_month);
+            player.setDay(bd_date);
+            playerList.add(player);         
+                
+        }
+       
+       //Connecting to prolog logic by Malinda
+        ArrayList<Player> resultPlayer=zodi.getZodiacResult(playerList);
+        for (Player player : resultPlayer) 
+        {
             //Display Person in the Table
-            convertedObjects[0] = name;
-            convertedObjects[1] = age;
-            convertedObjects[2] = null;
+            convertedObjects[0] = player.getName();
+            convertedObjects[1] = player.getAge();
+            convertedObjects[2] = player.getDescription();
             convertedObjects[3] = null;
                     
             dtModel.addRow(convertedObjects);
-            
         }
         this.tbl_Display.setModel(dtModel);
     }

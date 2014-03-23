@@ -245,6 +245,7 @@ public class DetailsEntryGUI extends javax.swing.JFrame {
 
     private void btn_SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SubmitActionPerformed
         //Checking for missing details
+        
         if (    !txt_Name.getText().equals("") 
                 && cmbbx_DOBDate.getSelectedIndex() != 0 
                 && cmbbx_DOBMonth.getSelectedIndex() != 0 
