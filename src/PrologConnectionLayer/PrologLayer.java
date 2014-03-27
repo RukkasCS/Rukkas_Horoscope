@@ -10,7 +10,11 @@ public class PrologLayer
     
  private boolean prologConnection()
  {
-    String consult="consult('C:/Users/malinda/Documents/NetBeansProjects/DSA/Rukkas_Horoscope/src/zodiacSourceFile/Z1.pl')"; 
+    String consult="consult('C:/Users/User/Documents/NetBeansProjects/ExampleProjects/Rukkas_Horoscope/src/zodiacSourceFile/Z1.pl')"; 
+   
+    //Maliya's connection
+    //String consult="consult('C:/Users/malinda/Documents/NetBeansProjects/DSA/Rukkas_Horoscope/src/zodiacSourceFile/Z1.pl')";
+    
     Query q1;
     q1 = new Query(consult);
     return q1.hasSolution();
@@ -23,7 +27,7 @@ public class PrologLayer
             Player returnPlayer=new Player();
 
         
-        int year=player.getYear();
+//        int year=player.getYear();
         int month=player.getMonth();
         int date=player.getDay();
 
