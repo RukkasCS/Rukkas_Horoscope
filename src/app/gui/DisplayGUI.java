@@ -55,7 +55,7 @@ public class DisplayGUI extends javax.swing.JFrame {
     String[] libraNeg = {"- Superficial","- Vain","- Indecisive","- Unreliable"};
 
     String[] scorpioPos = {"- Loyal","- Passionate","- Resourceful","- Observant","- Dynamic"};
-    String[] scopioNeg = {"- Jealous","- Obsessive","- Suspicious","- Manipulative","- Unyielding"};    
+    String[] scorpioNeg = {"- Jealous","- Obsessive","- Suspicious","- Manipulative","- Unyielding"};    
 
     String[] sagittariusPos = {"- Independence"};
     String[] sagittariusNeg = {"- Unemotional"};
@@ -252,16 +252,21 @@ public class DisplayGUI extends javax.swing.JFrame {
         {            
             String zodiac =dtModel.getValueAt(selected, 2).toString();
             
-            positives = getPositives(zodiac);
-            //getNegatives
-            
+            //Adding elements to the Positives List
+            positives = getPositives(zodiac);            
             for (String s:positives)
             {
                 posMod.addElement(s);
-            }
-            
+            }            
             list_Pos.setModel(posMod);
             
+            //Adding elements to the Negatives List
+            negatives = getNegatives(zodiac);
+            for (String s:negatives)
+            {
+                negMod.addElement(s);
+            }            
+            list_Neg.setModel(negMod);
         }
     }//GEN-LAST:event_tbl_DisplayMouseClicked
 
@@ -271,9 +276,42 @@ public class DisplayGUI extends javax.swing.JFrame {
         
         switch (zodiac)
         {
-                case "'Aries'": p = ariesPos; break;
+            case "'Aries'": p = ariesPos; break;
+            case "'Taurus'": p = taurusPos ; break;
+            case "'Gemini'": p = geminiPos ; break;
+            case "'Cancer'": p = cancerPos ; break;
+            case "'Leo'": p = leoPos ; break;
+            case "'Virgo'": p = virgoPos ; break;
+            case "'Libra'": p = libraPos ; break;
+            case "'Scorpio'": p = scorpioPos ; break;
+            case "'Sagittarius'": p = sagittariusPos ; break;
+            case "'Capricorn'": p = capricornPos ; break;
+            case "'Aquarius'": p = aquariusPos ; break;
+            case "'Pisces'": p = piscesPos ; break;
         }
         return p;
+    }
+    
+    String[] getNegatives(String zodiac)
+    {
+        String[] n = null;
+        
+        switch (zodiac)
+        {
+            case "'Aries'": n = ariesNeg; break;
+            case "'Taurus'": n = taurusNeg ; break;
+            case "'Gemini'": n = geminiNeg ; break;
+            case "'Cancer'": n = cancerNeg ; break;
+            case "'Leo'": n = leoNeg ; break;
+            case "'Virgo'": n = virgoNeg ; break;
+            case "'Libra'": n = libraNeg ; break;
+            case "'Scorpio'": n = scorpioNeg ; break;
+            case "'Sagittarius'": n = sagittariusNeg ; break;
+            case "'Capricorn'": n = capricornNeg ; break;
+            case "'Aquarius'": n = aquariusNeg ; break;
+            case "'Pisces'": n = piscesNeg ; break;
+        }
+        return n;
     }
     
     /**
