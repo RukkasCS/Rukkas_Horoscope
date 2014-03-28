@@ -1,4 +1,4 @@
-getDate(Y,X,M,D):-
+getDate(X,M,D):-
 
 	(
 	 M>=1,M=<12->
@@ -6,126 +6,101 @@ getDate(Y,X,M,D):-
 		 M=1->
 			(
 			 D>=20,D=<31->
-				X='Aquarius',
-		                Y='hello'
+				X='Aquarius'
 			;
-				X='Capricorn',
-		                Y='hello'
+				X='Capricorn'
 			)
 
 		;
 		 M=2->
 			(
 			 D>=19,D=<28->
-				X='Pisces',
-		                Y='hello'
+				X='Pisces'
 			;
-				X='Aquarius',
-		                Y='hello'
+				X='Aquarius'
 			)
 		;
 		 M=3->
 			(
 			 D>=21,D=<31->
-				X='Aries',
-		                Y='hello'
+				X='Aries'
 			;
-				X='Pisces',
-		                Y='hello'
+				X='Pisces'
 			)
 		;
 		 M=4->
 			(
 			 D>=20,D=<30->
-				X='Taurus',
-		                Y='hello'
+				X='Taurus'
 			;
-				X='Aries',
-		                Y='hello'
+				X='Aries'
 			)
 		;
 		  M=5->
 			(
 			 D>=21,D=<31->
-				X='Gemini',
-			        Y='hello'
+				X='Gemini'
 			;
-				X='Taurus',
-			        Y='hello'
+				X='Taurus'
 			)
 		;
 		  M=6->
 			(
 			 D>=21,D=<30->
-				X='Cancer',
-			        Y='hello'
+				X='Cancer'
 			;
-				X='Gemini',
-			        Y='hello'
+				X='Gemini'
 			)
 		;
 		 M=7->
 			(
 			 D>=23,D=<31->
-				X='Leo',
-		                Y='hello'
+				X='Leo'
 			;
-				X='Cancer',
-		                Y='hello'
+				X='Cancer'
 			)
 		;
 		 M=8->
 			(
 			 D>=23,D=<30->
-				X='Virgo',
-		                Y='hello'
+				X='Virgo'
 			;
-                                X='Leo',
-		                Y='hello'
+				X='Leo'
 			)
 		;
 		 M=9->
 			(
 			 D>=23,D=<30->
-				X='Libra',
-		                Y='hello'
+				X='Libra'
 			;
-				X='Virgo',
-		                Y='hello'
+				X='Virgo'
 			)
 		;
 		  M=10->
 			(
 			 D>=23,D=<31->
-				X='Scorpio',
-			        Y='hello'
+				X='Scorpio'
 			;
-				X='Libra',
-			        Y='hello'
+				X='Libra'
 			)
 		;
 		 M=11->
 			(
 			 D>=22,D=<30->
-				X='Sagittarius',
-		                Y='hello'
+				X='Sagittarius'
 			;
-				X='Scorpio',
-		                Y='hello'
+				X='Scorpio'
 			)
 		;
 		  M=12->
 			(
 			 D>=22,D=<30->
-				X='Capricorn',
-			        Y='hello'
+				X='Capricorn'
 			;
-				X='Sagittarius',
-			        Y='hello'
+				X='Sagittarius'
 			)
 		)
 		;
-	X='wrong Month.please try again',
-        Y='hello'
+	X='wrong Month.please try again'
 	)
 .
