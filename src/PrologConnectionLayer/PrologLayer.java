@@ -14,10 +14,10 @@ public class PrologLayer
 //    String consult="consult('C:/Users/Rukshan/Documents/NetBeansProjects/Rukkas_Horoscope/src/zodiacSourceFile/Z1.pl')";
     
     //Chathuranga's's Connection
-    String consult="consult('C:/Users/Chathuranga/Documents/NetBeansProjects/Rukkas_Horoscope/src/zodiacSourceFile/Z1.pl')";
+//    String consult="consult('C:/Users/Chathuranga/Documents/NetBeansProjects/Rukkas_Horoscope/src/zodiacSourceFile/Z1.pl')";
     
     //Mora's Connection
-    //String consult="consult('C:/Users/User/Documents/NetBeansProjects/ExampleProjects/Rukkas_Horoscope/src/zodiacSourceFile/Z1.pl')"; 
+    String consult="consult('C:/Users/User/Documents/NetBeansProjects/ExampleProjects/Rukkas_Horoscope/src/zodiacSourceFile/Z1.pl')"; 
    
     //Maliya's connection
     //String consult="consult('C:/Users/malinda/Documents/NetBeansProjects/DSA/Rukkas_Horoscope/src/zodiacSourceFile/Z1.pl')";
