@@ -163,11 +163,11 @@ public class DisplayGUI extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel8.setText("Negatives");
 
-        list_Pos.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        list_Pos.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         list_Pos.setForeground(new java.awt.Color(0, 153, 0));
         jScrollPane3.setViewportView(list_Pos);
 
-        list_Neg.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        list_Neg.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         list_Neg.setForeground(new java.awt.Color(204, 0, 0));
         jScrollPane4.setViewportView(list_Neg);
 
@@ -194,9 +194,9 @@ public class DisplayGUI extends javax.swing.JFrame {
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
+                .addGap(40, 40, 40)
                 .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(160, 160, 160))
         );
