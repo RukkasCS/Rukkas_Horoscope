@@ -39,7 +39,6 @@ public class PrologLayer
          Query q2=new Query(commandText);
 
          returnPlayer.setZodiacSign(q2.oneSolution().get("X").toString());
-//         returnPlayer.setDescription(q2.oneSolution().get("Y").toString());         
          returnPlayer.setName(player.getName());
          returnPlayer.setAge(player.getAge());
          return returnPlayer;

@@ -12,7 +12,6 @@ public class Player
     
     private String name;
     private String zodiacSign;
-    private String description;
     private int year;
     private int month;
     private int date;
@@ -46,21 +45,7 @@ public class Player
         this.zodiacSign = zodiacSign;
     }
 
-    /**
-     * @return the description
-     */
-    public String getDescription() {
-        return description;
-    }
-
-    /**
-     * @param description the description to set
-     */
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    /**
+        /**
      * @return the year
      */
     public int getYear() {
