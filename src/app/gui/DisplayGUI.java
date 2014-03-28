@@ -23,6 +23,13 @@ public class DisplayGUI extends javax.swing.JFrame {
     /**
      * Creates new form DisplayGUI
      */
+    int positivesSize;
+    int negativesSize;
+    String[] positives;
+    String[] negatives;
+    
+    
+    
     public DisplayGUI() {
         setLocation(300, 10);
         initComponents();
@@ -202,7 +209,7 @@ public class DisplayGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tbl_DisplayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_DisplayMouseClicked
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_tbl_DisplayMouseClicked
 
     /**
